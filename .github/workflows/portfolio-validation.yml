@@ -1,0 +1,24 @@
+name: Portfolio Validation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate portfolio links and formatting
+        run: python scripts/validate_portfolio.py .
+      - name: Test exposure-prioritization model
+        working-directory: projects/threat-informed-exposure-management
+        run: python -m unittest discover -s tests -v
+      - name: Execute exposure-prioritization pipeline
+        working-directory: projects/threat-informed-exposure-management
+        run: python src/prioritize_exposures.py data/sample_exposures.csv /tmp/prioritized_exposures.csv

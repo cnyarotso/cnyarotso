@@ -15,9 +15,18 @@ I combine threat intelligence, security telemetry, vulnerability context, and au
 
 | Project | Question answered | Evidence you can review |
 |---|---|---|
+| [Threat-Informed Exposure Prioritization Engine](projects/threat-informed-exposure-management/) | Which exposures deserve action first when vulnerability severity is not enough? | Transparent scoring method, synthetic dataset, Python automation, ranked output, tests, SLAs, and decision rationale |
 | [Zeek-to-Splunk Network Threat Hunting Lab](https://github.com/cnyarotso/SocLab) | Can packet data become a defensible hunting and escalation decision? | Zeek workflow, SPL field parsing, hunt queries, investigation report, enrichment plan, screenshots, and limitations |
 | [Follina Malware Triage & Detection](https://github.com/cnyarotso/Folina_Malware_Triage_Project) | How does a suspicious document become a detection and remediation plan? | Static-analysis playbook, ATT&CK-informed assessment, Sigma rule, KQL/SPL hunts, exposure-priority model, and response actions |
 | [Customer Revenue & Retention Analytics](https://github.com/cnyarotso/customer-revenue-retention-analytics) | How can complex data be translated into an executive decision? | Cohort/retention analysis, business metrics, visualization, and recommendations |
+
+## Portfolio map
+
+| Area | Purpose |
+|---|---|
+| [Projects](projects/) | Recruiter-facing case studies and a reusable documentation standard |
+| [Homelab](homelab/) | Verified environment, architecture, data flow, and visibility gaps |
+| [Analyst playbooks](playbooks/) | Repeatable triage, intelligence enrichment, and detection-validation workflows |
 
 ## Technical toolkit
 
