@@ -1,0 +1,7 @@
+exposure_id,asset_name,business_service,cve,cvss,asset_criticality,known_exploited,active_exploitation,externally_reachable,identity_privileged,control_coverage,days_open,intelligence_confidence,owner,status
+EXP-001,web-payments-01,Digital Payments,CVE-SYNTH-0001,8.1,5,true,true,true,false,55,19,high,Payments Platform,open
+EXP-002,hr-workstation-14,Human Resources,CVE-SYNTH-0002,9.8,3,false,false,false,false,92,6,low,End User Computing,in_progress
+EXP-003,identity-admin-02,Identity Services,CVE-SYNTH-0003,7.5,5,true,false,false,true,70,42,moderate,Identity Engineering,open
+EXP-004,marketing-web-03,Public Website,CVE-SYNTH-0004,6.5,3,false,true,true,false,40,12,high,Digital Experience,open
+EXP-005,finance-db-01,Financial Reporting,CVE-SYNTH-0005,9.1,5,false,false,false,true,88,95,moderate,Database Services,exception
+EXP-006,branch-kiosk-22,Branch Operations,CVE-SYNTH-0006,5.9,4,true,true,false,false,65,3,high,Branch Technology,remediated
