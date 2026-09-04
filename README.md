@@ -1,32 +1,50 @@
-# 👤 Hi, I'm Carol Nyarotso
+# Carol Nyarotso
 
-*SOC Analyst | Security Data Analytics | Microsoft Sentinel Specialist**
+**Cybersecurity Analyst | Threat-Informed Detection | Security Analytics**
 
-I bridge cybersecurity operations and data analytics to build smarter detection, reduce alert fatigue, and turn raw telemetry into actionable security intelligence.
+I combine threat intelligence, security telemetry, vulnerability context, and automation to identify the exposures that matter most, improve detection, and communicate actionable risk to leadership.
 
-## 🧆 Current Focus
-- Advanced KQL & time-series anomaly detection in Microsoft Sentinel
-- Statistical detection engineering beyond rule-based alerts
-- Security metrics & executive-ready dashboards (Power BI / Workbooks)
+## What I bring
 
-## 📫 Tech Stack
-| Domain | Tools |
-|--------|------|
-| SIEM / Cloud | Microsoft Sentinel, Azure Monitor, Log Analytics |
-| Query / Analytics | KQL (Advanced), Python (Pandas), SQL |
-| Visualization | Power BI, Sentinel Workbooks, Tableau |
-| Frameworks | MITRE ATTACK, NIST CSF |
-| Automation | PowerShell, GitHub Actions |
+- **Investigation:** turn endpoint, identity, and network telemetry into a scoped question, evidence trail, disposition, and next action.
+- **Detection engineering:** write and tune KQL/SPL hunts, document assumptions, and map supported behavior to MITRE ATT&CK.
+- **Threat-informed exposure management:** connect intelligence and observed behavior to asset criticality, vulnerability state, control coverage, and remediation priority.
+- **Risk communication:** build dashboards and concise case reports that separate facts, hypotheses, confidence, and business impact.
 
-## 🧊 Featured Projects
-- **[SocLab: Sentinel Investigation & Analytics](https://github.com/cnyarotso/SocLab)** – Security analytics lab with KQL detection engineering, statistical anomaly detection, and quantified IR metrics
-- **[Customer Revenue Retention Analytics](https://github.com/cnyarotso/customer-revenue-retention-analytics)** – Cohort analytics and churn prediction with business intelligence insights
-- **[King County House Price Prediction](https://github.com/cnyarotso/Python-Notebook-Project---King_County_House_Price_Prediction)** — EDA & regression modeling demonstrating data analysis fundamentals
+## Start here: selected case studies
 
-## 📫 Connect
-- 💬 [Portfolio](https://sites.google.com/view/carols-portfolio/home)
-- � [[SOC Lab Writeups](https://sites.google.com/view/carolnyarotso-soclab/view-projects/microsoft-sentinel-soc-investigation-lab)
-- 🧃 [Email](mailto:your-email@example.com)
+| Project | Question answered | Evidence you can review |
+|---|---|---|
+| [Zeek-to-Splunk Network Threat Hunting Lab](https://github.com/cnyarotso/SocLab) | Can packet data become a defensible hunting and escalation decision? | Zeek workflow, SPL field parsing, hunt queries, investigation report, enrichment plan, screenshots, and limitations |
+| [Follina Malware Triage & Detection](https://github.com/cnyarotso/Folina_Malware_Triage_Project) | How does a suspicious document become a detection and remediation plan? | Static-analysis playbook, ATT&CK-informed assessment, Sigma rule, KQL/SPL hunts, exposure-priority model, and response actions |
+| [Customer Revenue & Retention Analytics](https://github.com/cnyarotso/customer-revenue-retention-analytics) | How can complex data be translated into an executive decision? | Cohort/retention analysis, business metrics, visualization, and recommendations |
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=cnyarotso&show_icons=true&theme=dark&include_all_commits=true&count_private=false)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=cnyarotso&layout=compact&theme=dark&langs_count=8)
+## Technical toolkit
+
+| Area | Tools and methods |
+|---|---|
+| SIEM and detection | Microsoft Sentinel, Splunk, KQL, SPL, alert triage, detection tuning |
+| Network analysis | Zeek, Wireshark, PCAP analysis, DNS and connection telemetry |
+| Threat and risk | MITRE ATT&CK, IOC/TTP assessment, exposure prioritization, NIST CSF |
+| Data and visualization | Python, Pandas, SQL, Power BI, Tableau |
+| Cloud and automation | Azure Log Analytics, PowerShell, GitHub Actions |
+
+## How I document an investigation
+
+1. Define the question and scope.
+2. Preserve evidence and normalize telemetry.
+3. Test a hypothesis with a reproducible query.
+4. Add threat, asset, vulnerability, and control context.
+5. Record what is known, unknown, and inferred.
+6. Recommend an owner, action, priority, and validation method.
+
+## Current development
+
+- M.S. Cybersecurity candidate, Kennesaw State University
+- CompTIA Security+
+- Cisco CCNA
+- Building deeper capability in cyber threat intelligence, exposure management, Microsoft Sentinel, and security automation
+
+## Portfolio
+
+Visit [carolnyarotso.com](https://carolnyarotso.com) for the visual portfolio and project walkthroughs.
