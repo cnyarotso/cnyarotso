@@ -21,4 +21,6 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Execute exposure-prioritization pipeline
         working-directory: projects/threat-informed-exposure-management
-        run: python src/prioritize_exposures.py data/sample_exposures.csv /tmp/prioritized_exposures.csv
+        run: |
+          python src/prioritize_exposures.py data/sample_exposures.csv /tmp/prioritized_exposures.csv
+          python src/run_sql_analysis.py output/prioritized_exposures.csv sql/security_exposure_analysis.sql

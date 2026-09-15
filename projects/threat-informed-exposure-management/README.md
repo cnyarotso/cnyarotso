@@ -19,16 +19,29 @@ A high CVSS score does not automatically represent the most urgent business expo
 
 This project makes that reasoning visible and testable.
 
-## Decision flow
+## Architecture and data flow
 
 ```mermaid
-flowchart LR
-    A["Vulnerability records"] --> B["Threat evidence"]
-    B --> C["Asset and control context"]
-    C --> D["Explainable score"]
-    D --> E["Priority and SLA"]
-    E --> F["Action and validation"]
+flowchart TD
+    A["Synthetic exposure CSV"] --> B["Python validation and scoring"]
+    B --> C["Ranked exposure CSV"]
+    C --> D["In-memory SQLite model"]
+    D --> E["Named analyst queries"]
+    E --> F["Action queues and controls"]
 ```
+
+The pipeline fails before writing output when required values, types, ranges, or unique identifiers are invalid. The committed ranked CSV is a reproducible sample result; a fresh run is compared with it during validation.
+
+## Data model
+
+The grain is one exposure on one fictional asset, identified by the primary key `exposure_id`. Each record combines:
+
+- vulnerability severity and identifier;
+- threat evidence and intelligence confidence;
+- asset criticality, reachability, privilege, and control coverage;
+- remediation owner, workflow status, age, priority, SLA, and recommended action.
+
+The [data dictionary](docs/data_dictionary.md) defines every field and validation rule. Production data would separate assets, vulnerabilities, observations, threat intelligence, controls, owners, exceptions, and remediation events into related tables so history and many-to-many relationships remain auditable.
 
 ## Scoring model
 
@@ -49,12 +62,24 @@ The full rationale, assumptions, and governance cautions are in the [methodology
 
 ## Run the project
 
-Requirements: Python 3.10 or later; no third-party packages.
+Requirements: Python 3.10 or later; no third-party packages. SQLite is accessed through Python's standard library.
 
 ```bash
 python src/prioritize_exposures.py data/sample_exposures.csv output/prioritized_exposures.csv
+python src/run_sql_analysis.py output/prioritized_exposures.csv sql/security_exposure_analysis.sql
 python -m unittest discover -s tests -v
 ```
+
+## SQL analysis
+
+The [named SQLite queries](sql/security_exposure_analysis.sql) turn the Python output into four analyst views:
+
+- an urgent action queue for critical and high exposures with threat or reachability evidence;
+- overdue exposure counts and aging by remediation owner;
+- the highest-priority open exposure within each business service using a window function; and
+- a duplicate-identifier control that should return no rows.
+
+The Python runner uses an in-memory database, explicit data types, `NOT NULL` rules, range checks, and a primary key. No database file or sensitive data is created.
 
 ## Output fields
 
@@ -89,6 +114,13 @@ The highest-ranked record should not be described merely as “the highest CVSS.
 - The model assumes trustworthy scanner, CMDB, control, and intelligence data.
 - Business owners must review exceptions and remediation feasibility.
 - Production deployment requires calibration, access controls, audit history, and monitoring.
+
+## Design choices and lessons
+
+- **Transparent rules instead of a black box:** reviewers can trace every score to documented factors and see the reasons in the output.
+- **Fail closed on invalid data:** malformed booleans, missing fields, duplicate identifiers, out-of-range numbers, and fractional values in integer fields stop processing instead of producing misleading priorities.
+- **Bug corrected:** the first implementation converted validated numeric values with `int()`, which could silently truncate a value such as `3.9`. A dedicated integer parser now rejects fractional inputs, and a regression test preserves the fix.
+- **Next improvement:** add dated scan snapshots and exception-review dates so SQL can measure recurrence, time to remediation, reopen rates, and expiring risk acceptances.
 
 ## Connection to cybersecurity analyst work
 
