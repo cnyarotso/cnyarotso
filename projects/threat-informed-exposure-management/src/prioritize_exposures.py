@@ -55,6 +55,14 @@ def parse_number(value: str, field: str, minimum: float, maximum: float) -> floa
     return number
 
 
+def parse_integer(value: str, field: str, minimum: int, maximum: int) -> int:
+    """Parse a whole-number field without silently truncating decimals."""
+    number = parse_number(value, field, minimum, maximum)
+    if not number.is_integer():
+        raise ValueError(f"{field} must be a whole number; received {value!r}")
+    return int(number)
+
+
 def validate_record(record: dict[str, str]) -> dict[str, object]:
     missing = sorted(field for field in REQUIRED_FIELDS if not record.get(field, "").strip())
     if missing:
@@ -70,13 +78,13 @@ def validate_record(record: dict[str, str]) -> dict[str, object]:
     return {
         **record,
         "cvss": parse_number(record["cvss"], "cvss", 0, 10),
-        "asset_criticality": int(parse_number(record["asset_criticality"], "asset_criticality", 1, 5)),
+        "asset_criticality": parse_integer(record["asset_criticality"], "asset_criticality", 1, 5),
         "known_exploited": parse_bool(record["known_exploited"], "known_exploited"),
         "active_exploitation": parse_bool(record["active_exploitation"], "active_exploitation"),
         "externally_reachable": parse_bool(record["externally_reachable"], "externally_reachable"),
         "identity_privileged": parse_bool(record["identity_privileged"], "identity_privileged"),
-        "control_coverage": int(parse_number(record["control_coverage"], "control_coverage", 0, 100)),
-        "days_open": int(parse_number(record["days_open"], "days_open", 0, 10000)),
+        "control_coverage": parse_integer(record["control_coverage"], "control_coverage", 0, 100),
+        "days_open": parse_integer(record["days_open"], "days_open", 0, 10000),
         "intelligence_confidence": confidence,
         "status": status,
     }

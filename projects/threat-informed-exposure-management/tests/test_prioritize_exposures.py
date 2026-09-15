@@ -78,6 +78,14 @@ class ExposureScoringTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "must be unique"):
             prioritize([record(), record()])
 
+    def test_fractional_integer_field_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "must be a whole number"):
+            score_exposure(record(asset_criticality="3.9"))
+
+    def test_out_of_range_value_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "must be between 0 and 100"):
+            score_exposure(record(control_coverage="101"))
+
 
 if __name__ == "__main__":
     unittest.main()
