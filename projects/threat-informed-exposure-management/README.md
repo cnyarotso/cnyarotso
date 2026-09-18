@@ -120,8 +120,13 @@ The highest-ranked record should not be described merely as “the highest CVSS.
 - **Transparent rules instead of a black box:** reviewers can trace every score to documented factors and see the reasons in the output.
 - **Fail closed on invalid data:** malformed booleans, missing fields, duplicate identifiers, out-of-range numbers, and fractional values in integer fields stop processing instead of producing misleading priorities.
 - **Bug corrected:** the first implementation converted validated numeric values with `int()`, which could silently truncate a value such as `3.9`. A dedicated integer parser now rejects fractional inputs, and a regression test preserves the fix.
-- **Next improvement:** add dated scan snapshots and exception-review dates so SQL can measure recurrence, time to remediation, reopen rates, and expiring risk acceptances.
+- **Historical analytics added:** dated scan snapshots and exception-review dates now support recurrence, time-to-remediation, reopened-exposure, and expiring-exception analysis.
 
 ## Connection to cybersecurity analyst work
 
 This project demonstrates CTI-to-exposure correlation, risk-based remediation prioritization, transparent automation, SLA reporting, quality validation, and concise communication to technical and leadership audiences.
+
+
+## Historical remediation analytics
+
+The [historical analytics extension](docs/historical_analytics.md) adds dated synthetic scan snapshots, exception-review dates, four SQLite analyses, and automated tests. It measures time to remediation, recurring exposure, reopened items, and exceptions due for review—moving the project from a static priority list to a remediation-performance workflow.
