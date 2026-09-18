@@ -1,0 +1,16 @@
+snapshot_date,exposure_id,status,exception_review_date
+2026-06-30,EXP-001,open,
+2026-07-31,EXP-001,in_progress,
+2026-08-31,EXP-001,remediated,
+2026-09-15,EXP-001,remediated,
+2026-06-30,EXP-002,open,
+2026-07-31,EXP-002,remediated,
+2026-08-31,EXP-002,open,
+2026-09-15,EXP-002,in_progress,
+2026-06-30,EXP-003,exception,2026-09-25
+2026-07-31,EXP-003,exception,2026-09-25
+2026-08-31,EXP-003,exception,2026-09-25
+2026-09-15,EXP-003,exception,2026-09-25
+2026-07-31,EXP-004,open,
+2026-08-31,EXP-004,open,
+2026-09-15,EXP-004,remediated,
